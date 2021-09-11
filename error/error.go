@@ -29,3 +29,17 @@ func NewBadRequestError(message string) ErrorInterface {
 		ErrorStatus:  http.StatusBadRequest,
 	}
 }
+
+func NewInternalServerError(message string) ErrorInterface {
+	return error{
+		ErrorMessage: message,
+		ErrorStatus:  http.StatusInternalServerError,
+	}
+}
+
+func NewUn(message string) ErrorInterface {
+	return error{
+		ErrorMessage: message,
+		ErrorStatus:  http.StatusUnauthorized,
+	}
+}
