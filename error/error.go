@@ -5,6 +5,11 @@ import (
 	"net/http"
 )
 
+type ErrorInterface interface {
+	Message() string
+	Status() int
+}
+
 type error struct {
 	ErrorMessage string `json:"message"`
 	ErrorStatus  int    `json:"status"`
@@ -18,7 +23,7 @@ func (e error) Status() int {
 	return e.ErrorStatus
 }
 
-func NewBadRequestError(message string) error {
+func NewBadRequestError(message string) ErrorInterface {
 	return error{
 		ErrorMessage: message,
 		ErrorStatus:  http.StatusBadRequest,
