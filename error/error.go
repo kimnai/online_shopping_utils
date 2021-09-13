@@ -37,7 +37,7 @@ func NewInternalServerError(message string) ErrorInterface {
 	}
 }
 
-func NewUn(message string) ErrorInterface {
+func NewUnauthorizedError(message string) ErrorInterface {
 	return error{
 		ErrorMessage: message,
 		ErrorStatus:  http.StatusUnauthorized,
